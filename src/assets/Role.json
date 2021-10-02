@@ -1,0 +1,26 @@
+[
+    {
+        "roleId": 1,
+        "name": "CEO"
+    },
+    {
+        "roleId": 2,
+        "name": "Supervisor"
+    },
+    {
+        "roleId": 3,
+        "name": "Team Leader"
+    },
+    {
+        "roleId": 4,
+        "name": "Assistant Team Leader"
+    },
+    {
+        "roleId": 5,
+        "name": "Developer"
+    },
+    {
+        "roleId": 6,
+        "name": "QA Engineer"
+    }
+]

@@ -1,0 +1,78 @@
+
+:root { 
+  --blueColor: #458efe;
+}
+
+.flex {
+	display: flex;
+}
+.justify-center {
+	justify-content: center;
+}
+
+ul {
+	 list-style-type: none;
+	 
+}
+
+ .org-container li {
+	 position: relative;
+}
+ .org-container li span {
+    font-weight: 400;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border-bottom: 2px solid #888;
+    background-color: #acacac;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ .org-container li span small {
+	 font-size: 12px;
+	 display: block;
+	 text-transform: uppercase;
+	 border-bottom: 1px solid #888;
+	 margin-bottom: 4px;
+}
+ .org-container .name ul {
+	 padding-left: 16px;
+}
+ .org-container .name ul li:before {
+	 display: block;
+	 position: absolute;
+	 top: -4px;
+	 left: -4px;
+	 height: 24px;
+	 width: 8px;
+	 content: "";
+	 border-left: 2px solid #ff5800;
+	 border-bottom: 2px solid #ff5800;
+}
+ .org-container .name ul li:after {
+	 display: block;
+	 position: absolute;
+	 content: "";
+	 top: -4px;
+	 left: -4px;
+	 bottom: 0;
+	 border-left: 2px solid #ff5800;
+}
+ .org-container .name ul li:last-child:after {
+	 display: none;
+}
+ 
+
+.button {
+ background-color: var(--blueColor); 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  cursor: pointer;
+}
