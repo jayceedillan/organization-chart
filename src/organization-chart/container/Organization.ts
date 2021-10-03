@@ -1,4 +1,4 @@
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import employeeData from "@/assets/EmployeeData.json";
 import OrganizationTree from "@/organization-chart/component/OrganizationTree.vue";
 import EmployeeOrgApp from "@/models/EmployeeOrgApp";
@@ -9,20 +9,22 @@ import EmployeeOrgApp from "@/models/EmployeeOrgApp";
 })
 export default class Organization extends Vue {
     empData = employeeData as Employee;
-    employees!: Employee;
-    testing = "aloha";
-    app: EmployeeOrgApp = new EmployeeOrgApp(this.empData); // = new EmployeeOrgApp(this.employee);
 
+    // testing = "aloha";
+    app: EmployeeOrgApp = new EmployeeOrgApp(this.empData); // = new EmployeeOrgApp(this.employee);}
 
-
-    created(): void {
-        console.log(this.app.ceo);
-        this.employees = this.app.ceo; //JSON.parse(JSON.stringify(this.empData)) as Employee;
+    get employees(): Employee {
+        return this.app.ceo;
     }
+
+    get isDisabled(): boolean {
+        return this.app.history.length < 2;
+    }
+
     async move(): Promise<void> {
         await this.app.move(8, 2);
-        this.employees = this.app.ceo;
-        this.testing = "yehey";
+        // this.employees = this.app.ceo;
+        // this.testing = "yehey";
         // this.employee.subordinates.push({
         //     uniqueid: 23,
         //     name: "Bob Saget",
@@ -37,10 +39,11 @@ export default class Organization extends Vue {
     }
 
     undo(): void {
-        alert("xxx");
+        alert('xx');
+        this.app.undo();
     }
 
     redo(): void {
-        alert("xxx");
+        this.app.redo();
     }
 }
