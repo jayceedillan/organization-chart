@@ -1,7 +1,7 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import employeeData from "@/assets/EmployeeData.json";
 import OrganizationTree from "@/organization-chart/component/OrganizationTree.vue";
-import EmployeeOrgApp from "@/models/EmployeeOrgApp";
+import EmployeeOrgApp from "@/services/EmployeeOrgApp";
 import { organizationModule } from "@/store/OrganizationModule";
 @Component({
   components: {
