@@ -2,36 +2,45 @@
     "uniqueid": 1,
     "name": "Mark Zuckerberg",
     "roleId": 1,
+    "reportTo": 0,
     "subordinates": [
         {
             "uniqueid": 2,
             "name": "Sarah Donald",
             "roleId": 2,
+            "reportTo": 1,
             "subordinates": [
                 {
                     "uniqueid": 6,
                     "name": "Cassandra Reynolds",
                     "roleId": 3,
+                    "reportTo": 2,
                     "subordinates": [
                         {
                             "uniqueid": 7,
                             "name": "Mary Blue",
-                            "roleId": 4
+                            "roleId": 4,
+                            "reportTo": 6,
+                            "subordinates": []
                         },
                         {
                             "uniqueid": 8,
                             "name": "Bob Saget",
                             "roleId": 4,
+                            "reportTo": 6,
                             "subordinates": [
                                 {
                                     "uniqueid": 9,
                                     "name": "Tina Teff",
                                     "roleId": 5,
+                                    "reportTo": 8,
                                     "subordinates": [
                                         {
                                             "uniqueid": 10,
                                             "name": "Will Turner",
-                                            "roleId": 6
+                                            "roleId": 6,
+                                            "reportTo": 9,
+                                            "subordinates": []
                                         }
                                     ]
                                 }
@@ -45,45 +54,58 @@
             "uniqueid": 3,
             "name": "Tyler Simpson",
             "roleId": 2,
+            "reportTo": 1,
             "subordinates": [
                 {
                     "uniqueid": 11,
                     "name": "Harry Tobs",
                     "roleId": 3,
+                    "reportTo": 3,
                     "subordinates": [
                         {
                             "uniqueid": 12,
                             "name": "Thomas Brown",
-                            "roleId": 4
+                            "roleId": 4,
+                            "reportTo": 11,
+                            "subordinates": []
                         }
                     ]
                 },
                 {
                     "uniqueid": 13,
                     "name": "George Carrey",
-                    "roleId": 3
+                    "roleId": 3,
+                    "reportTo": 3,
+                    "subordinates": []
                 },
                 {
                     "uniqueid": 14,
                     "name": "Garry Style",
-                    "roleId": 3
+                    "roleId": 3,
+                    "reportTo": 3,
+                    "subordinates": []
                 }
             ]
         },
         {
             "uniqueid": 4,
             "name": "Bruce Willis",
-            "roleId": 2
+            "roleId": 2,
+            "reportTo": 1,
+            "subordinates": []
         },
         {
             "uniqueid": 5,
             "name": "Georgina Flangy",
             "roleId": 2,
+            "reportTo": 1,
             "subordinates": [
                 {
-                    "uniqueid": 14,
+                    "uniqueid": 15,
                     "name": "Sophie Turner",
-                    "roleId": 3
+                    "roleId": 3,
+                    "reportTo": 5,
+                    "subordinates": []
                 }
             ]
         }

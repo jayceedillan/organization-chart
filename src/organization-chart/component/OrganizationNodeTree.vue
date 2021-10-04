@@ -1,6 +1,12 @@
 <template>
   <li class="name">
-    <span>
+    <span
+      draggable="true"
+      @dragover="(e) => onDragOver(e)"
+      @drop="(e) => onDrop(node)"
+      @dragend="(e) => finishDrag(e)"
+      @dragstart="(e) => startDrag(node)"
+    >
       <small>{{ node.name }}</small>
     </span>
     <ul v-if="node.subordinates && node.subordinates.length">

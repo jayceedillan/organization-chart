@@ -1,7 +1,5 @@
 <template>
   <div>
-    {{ employees.subordinates.length }}
-    {{ isDisabled }}
     <div class="flex justify-center">
       <div class="org-container">
         <organization-tree :treeData="employees" />
@@ -9,7 +7,6 @@
     </div>
 
     <div class="flex justify-center">
-      <button type="button" class="button" @click="move">Move</button>
       <button
         class="button"
         @click="undo"

@@ -1,49 +1,55 @@
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import employeeData from "@/assets/EmployeeData.json";
 import OrganizationTree from "@/organization-chart/component/OrganizationTree.vue";
 import EmployeeOrgApp from "@/models/EmployeeOrgApp";
+import { organizationModule } from "@/store/OrganizationModule";
 @Component({
-    components: {
-        OrganizationTree,
-    },
+  components: {
+    OrganizationTree,
+  },
 })
 export default class Organization extends Vue {
-    empData = employeeData as Employee;
+  empData = employeeData as Employee;
+  app: EmployeeOrgApp = new EmployeeOrgApp(this.empData);
 
-    // testing = "aloha";
-    app: EmployeeOrgApp = new EmployeeOrgApp(this.empData); // = new EmployeeOrgApp(this.employee);}
+  get employees(): Employee {
+    return this.app.ceo;
+  }
 
-    get employees(): Employee {
-        return this.app.ceo;
+  get isDisabled(): boolean {
+    return this.app.history.length < 2;
+  }
+
+  get getDragFrom(): Employee {
+    return organizationModule.getDragFrom;
+  }
+
+  get getDragTo(): Employee {
+    return organizationModule.getDragTo;
+  }
+
+  get isFinishDrag(): boolean {
+    return organizationModule.getIsFinishDrag;
+  }
+
+  @Watch("isFinishDrag")
+  async changeFinishDrag(): Promise<void> {
+    if (this.isFinishDrag && this.getDragTo.uniqueid) {
+      if (this.getDragFrom.roleId < this.getDragTo.roleId) {
+        alert("demotion of position is not allowed");
+        return;
+      }
+
+      await this.app.move(this.getDragFrom.uniqueid, this.getDragTo.roleId);
+      organizationModule.bindFinishDrag(false);
     }
+  }
 
-    get isDisabled(): boolean {
-        return this.app.history.length < 2;
-    }
+  undo(): void {
+    this.app.undo();
+  }
 
-    async move(): Promise<void> {
-        await this.app.move(8, 2);
-        // this.employees = this.app.ceo;
-        // this.testing = "yehey";
-        // this.employee.subordinates.push({
-        //     uniqueid: 23,
-        //     name: "Bob Saget",
-        //     subordinates: [],
-        //     roleId: 12,
-        // });
-
-        //  console.log(this.employee)
-        // setTimeout(() => {
-        //     alert(this.employee.subordinates.length);
-        // }, 550);
-    }
-
-    undo(): void {
-        alert('xx');
-        this.app.undo();
-    }
-
-    redo(): void {
-        this.app.redo();
-    }
+  redo(): void {
+    this.app.redo();
+  }
 }
